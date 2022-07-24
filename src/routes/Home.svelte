@@ -13,8 +13,11 @@
     let text4 = ['','','','','','','',''];
     let text5 = '';
     let title = '';
+    let activities = '';
+    let consumer = '';
+    let provider = '';
     const description = {
-            title: title, requirements : text1, volume: text2, fourVs: key, vstext: text3, quality: qua, qualdesc: text4, constraints: text5
+            title: title, consumer: consumer, activities: activities, provider: provider, requirements : text1, volume: text2, fourVs: key, vstext: text3, quality: qua, qualdesc: text4, constraints: text5
         }
 
     function handleSubmit(){
@@ -26,6 +29,9 @@
         description.qualdesc = text4
         description.constraints = text5
         description.title = title;
+        description.consumer = consumer;
+        description.provider = provider;
+        description.activities = activities;
         alert(JSON.stringify(description))
     }
 
@@ -42,7 +48,7 @@
     </div>
     <div class="row g-0">
         <div class="col-md-6">
-            <img id="pic1" src="src/Referencemodel.png" class="img-fluid rounded-start" alt="BigDataReferenceModel">
+            <img id="pic1" src="src/Referencemodel.png" class="img-fluid rounded-start" alt="BigDataReferenceModel" >
         </div>
         <div class="col-md-6">
             <div class="card-body">
@@ -94,7 +100,7 @@ context of comparison with other SUTs. The big data ecosystem aims to be vendor-
     </div>
     <div class="row g-0">
     <div class="col-md-6">
-        <img id="pic1" src="src/DecisionTrees.png" class="img-fluid rounded-start" alt="BigDataReferenceModel">
+        <img id="pic1" src="src/DecisionTrees.png" class="img-fluid rounded-start" alt="BigDataReferenceModel" width="600" height="600">
     </div>
     <div class="col-md-6">
         <div class="card-body">
@@ -112,11 +118,11 @@ context of comparison with other SUTs. The big data ecosystem aims to be vendor-
     </div>
     <div class="row g-0">
     <div class="col-md-6">
-        <img id="pic1" src="src/Application_pipeline.png" class="img-fluid rounded-start" alt="BigDataReferenceModel">
+        <img id="pic1" src="src/Application_pipeline.png" class="img-fluid rounded-start" alt="BigDataReferenceModel" width="600" height="600">
     </div>
     <div class="col-md-6">
         <div class="card-body">
-        <h5 class="card-title">Meta data collection</h5>
+        <h5 class="card-title">Semantic description of the big data benchmark</h5>
         <p class="card-text">The semantic model for big data archictures defines the technology agnostic framework for big data architecture setups</p>
         <p class="card-text"><small class="text-muted">>> Find out more about the NIST big data concept</small></p>
         <button type="button" class="btn btn-secondary" on:click|preventDefault={() => (nav = 2)}>Create semantic model</button>
@@ -132,7 +138,7 @@ context of comparison with other SUTs. The big data ecosystem aims to be vendor-
     </div>
     <div class="row g-0">
     <div class="col-md-6">
-        <img id="pic1" src="src/Referencemodel.png" class="img-fluid rounded-start" alt="BigDataReferenceModel">
+        <img id="pic1" src="src/pocblast.png" class="img-fluid rounded-start" alt="blast" width="600" height="600">
     </div>
     <div class="col-md-6">
         <div class="card-body">
@@ -149,20 +155,23 @@ context of comparison with other SUTs. The big data ecosystem aims to be vendor-
     <span>
 <button type="button" class="btn btn-secondary" on:click|preventDefault={() => (nav = 1)}>Back</button>
 
-<img id="pic1" src="src/arc42-site-logo.png" class="img-fluid rounded-start" alt="arc42logo" width="400" height="400">
-<img id="pic1" src="src/Application_pipeline.png" class="img-fluid rounded-start" alt="BigDataReferenceModel"width="500" height="500">
-<h1 class='pt-5'>ARC 42 Template</h1>
+<img id="pic1" src="src/semantic.png" class="img-fluid rounded-start" alt="semantic" width="700" height="700">
+
+<h1 class='pt-2'>NIST reference architecture with ARC 42 Template addons</h1>
 </span>
 <div>
-    <h3>About arc42</h3>
-<p class='arc'>arc42, the Template for documentation of software and system architecture.</p>
-<p class='arc'>   Created and maintained by Dr. Peter Hruschka, Dr. Gernot Starke and contributors. </p> 
- <p class='arc'>   Template Revision: 8.0 EN (based on asciidoc), February 2022
-    © We acknowledge that this document uses material from the arc 42 architecture template </p>
-<a href='https://arc42.org'>source: https://arc42.org</a>
-<p class='arc'>**Changes to the template: 
+    <h4>About arc42</h4>
+<p class='arc'>arc42, the Template for documentation of software and system architecture. Created and maintained by Dr. Peter Hruschka, Dr. Gernot Starke and contributors. Template Revision: 8.0 EN (based on asciidoc), February 2022
+    © We acknowledge that this document uses material from the arc 42 architecture template. **Changes to the template: 
     Stakeholder are out of scope as the community are the stakeholder for benchmarking.
-    Listed documentation steps are preliminary steps to create the decision trees.</p>
+    Listed documentation steps are preliminary steps to create the decision trees. <a href='https://arc42.org'>source: https://arc42.org</a></p>
+<!-- <p class='arc'>   Created and maintained by Dr. Peter Hruschka, Dr. Gernot Starke and contributors. </p> 
+<p class='arc'>   Template Revision: 8.0 EN (based on asciidoc), February 2022
+    © We acknowledge that this document uses material from the arc 42 architecture template </p> -->
+
+<!-- <p class='arc'>**Changes to the template: 
+    Stakeholder are out of scope as the community are the stakeholder for benchmarking.
+    Listed documentation steps are preliminary steps to create the decision trees.</p> -->
 
 
 </div>
@@ -171,38 +180,51 @@ context of comparison with other SUTs. The big data ecosystem aims to be vendor-
    
 </div>
 <div>
-    <h3>Content: </h3>
+    <hr>
     <ul>
         <li>
+            <section>
             <h4>Application Title</h4>
             <input class='p-1' bind:value={title}>
+            </section>
         </li>
         <li>
-            <h4 class='p-3'>1. Requirements Overview</h4>
+            <h4 class='p-1'>1. Orchestrator Requirements Overview</h4>
         </li>
+        
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Short description of the functional requirements, driving forces, extract (or abstract) of requirements. 
                 From the point of view of the end users a system is created or modified to improve support of a business activity and/or improve the quality</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" bind:value={text1}></textarea>
-            <h4 class='p-3'>1.1 Big Data 5V's</h4>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" bind:value={text1}></textarea>
+           
+                <h4 class='p-1'>1.1 Data provider</h4>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" bind:value={provider}></textarea>
+           
+            <h4 class='p-1'>1.2 Activities of big data application provider</h4>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" bind:value={activities}></textarea>
+            <h4 class='p-1'>1.3 Big Data 5V's</h4>
             <select multiple class="form-select" bind:value={key} size={5}>
                 {#each vs as v, index}
                     <option value={v} >{v}</option>
                 {/each}
             </select>
             <span >
-                <label class="p-2 bold">Volume</label>
+                <label class="p-1 bold">Volume</label>
             </span>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" bind:value={text2}></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" bind:value={text2}></textarea>
             {#each key as selv, x}
                     <span >
                         <label class="p-2 bold">{selv}</label>
                     </span>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" bind:value={text3[x]}></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" bind:value={text3[x]}></textarea>
             {/each}
         </div>
+      
+            <h4 class='p-1'>1.4 Data consumer</h4>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" bind:value={consumer}></textarea>
+      
         <li>
-            <h4 class='p-3'>2. Quality Goals</h4>
+            <h4 class='p-1'>2. Quality Goals</h4>
         </li>
         <div class="form-group">
             <label for="exampleFormControlSelect2">The top three (max five) quality goals for the architecture whose fulfillment is of highest importance </label>
@@ -213,24 +235,24 @@ context of comparison with other SUTs. The big data ecosystem aims to be vendor-
             </select>
             {#each qua as elem, y}
             <span >
-                <label class="p-2 bold">{elem}</label>
+                <label class="p-1 bold">{elem}</label>
             </span>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" bind:value={text4[y]}></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" bind:value={text4[y]}></textarea>
             {/each}
         </div>
        
         <li>
-            <h4 class='p-3'>3. Architecture Constraints</h4>
+            <h4 class='p-1'>3. Architecture Constraints</h4>
         </li>
         <div class="form-group">
             <label class='bold' for="exampleFormControlTextarea1">Underlying decision constraints</label>
             <div>Any requirement that constraints software architects in their freedom of design and implementation decisions or decision about the development process.
                  These constraints sometimes go beyond individual systems and are valid for whole organizations and companies. Architects should know exactly where they are free in their design decisions and where they must adhere to constraints. 
                  Constraints must always be dealt with; they may be negotiable, though</div>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" bind:value={text5}></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" bind:value={text5}></textarea>
         </div>
         <li>
-            <h4 class='p-3'>4. Decision making</h4>
+            <h4 class='p-1'>4. Decision making</h4>
         </li>
         <button type="button" class="btn btn-secondary" on:click={handleSubmit} on:click|preventDefault={() => (nav = 1)}>Submit | Create your first decision tree</button>
         <p class='pb-5'></p>
@@ -265,7 +287,7 @@ p {
 	}
 .NIST {
     text-align: justify;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
 .arc {
     text-align: justify;

@@ -328,10 +328,10 @@ const tree = {Processing: {name: "Processing", type: "default", complete: [{Esch
 
 <div class="container pt-5">
     <div class="row">
-        <div class="col font border-end border-secondary"><p>Which software components do you want to choose for your decision? The max limit is set to 10.</p></div>
+        <div class="col font border-end border-secondary"><p>Which software components do you want to choose for your decision? The max limit is set to 6.</p></div>
         <div class="col">
             <h2 class="pb-3">Decision tree leaf nodes</h2>
-            <select class="form-select" bind:value={selected} size={10}>
+            <select class="form-select" bind:value={selected} size={6}>
                 {#each leaves as leaf, index}
                     <option value={index}>{leaf}</option>
                 {/each}
@@ -354,7 +354,7 @@ const tree = {Processing: {name: "Processing", type: "default", complete: [{Esch
         <div class="col">
             <h2 class="pb-3">Decision tree decision nodes</h2>
 
-            <select class="form-select" bind:value={i} size={10}>
+            <select class="form-select" bind:value={i} size={6}>
                 {#each nodes as node, i}
                     <option value={i}>{node.name}, {node.description}</option>
                 {/each}
@@ -382,7 +382,7 @@ const tree = {Processing: {name: "Processing", type: "default", complete: [{Esch
         <div class="col font border-end border-secondary"><p>For your designed decision criteria you need to define the individual decision. To finalize the Processing Component Tree all individual decisions have to be filled. Click on the respective leaf node to fill on the labels.</p></div>
         <div class="col">
                 <h2 class="pb-3">Decision Tree Labels</h2>
-                <select on:click={createLabels} class="form-select" bind:value={key} size={10}>
+                <select on:click={createLabels} class="form-select" bind:value={key} size={6}>
                     {#each leaves as leaf, index}
                         <option value={index}>{leaf}</option>
                     {/each}
