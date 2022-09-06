@@ -155,7 +155,7 @@ context of comparison with other SUTs. The big data ecosystem aims to be vendor-
                 Next the velocity requirements lead to desired in-memory capabilities that speed up processing times. 
                 Thus the decision goes to Apache Spark.
             </p>
-	</p>
+	
             <p class="card-text NIST">
                 <p class='NIST'> The second decision for BLAST end-to-end-benchmark goes to Apache Cassandra. Based on the BLAST requirements, Availability as Reliability is stated as more important than consistency.
                     Especially with a dedicated BLAST data model in Cassandra, it is possible to split the BLAST algorithm in seperated write and read queries. 
@@ -164,7 +164,7 @@ context of comparison with other SUTs. The big data ecosystem aims to be vendor-
                     High speed delivery to Spark processing engine is facilitated by Cassandra's in-memory capabilities.
                     To speed up the read requests, BLAST velocity requirements are facilitated by fast index structures of primary and secondary indexes.
                 </p>
-	 </p>
+	
             <p class="card-text NIST">
                     <p class='NIST'> Finally the last decision for infrastructure providers falls to Google Cloud as a provider for customized IaaS setup. 
                         The decisive parameter of networking capabilities requires a less networking sensitive workload. 
@@ -172,7 +172,7 @@ context of comparison with other SUTs. The big data ecosystem aims to be vendor-
                         This leads to a low networking sensitivity. Thus the standard IaaS customized setup can be chosen with individual configuration of memory capabilities and number of machines.
                         This cloud service can also be provided by other companies, and Google Cloud is selected here as an example.
                     </p>
-	   </p>
+	
         <!-- <button type="button" class="btn btn-secondary" on:click|preventDefault={() => (nav = 2)}>Architecture Decisions for BLAST</button> -->
         </div>
     </div>
