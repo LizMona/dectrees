@@ -36,3 +36,15 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Code documentation
+
+Can be found at the dectrees Wiki. 
+
+Content: 
+- Coding Roadmap, next steps
+- Demo video
+- UML Activity diagram of Visu Component
+- UML Use case diagram of app
+- Additional information
+- Further explanaitions can be also found at ---docs--- of visu.svelte and subtree.svelte

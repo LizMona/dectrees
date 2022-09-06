@@ -1,7 +1,20 @@
 <script >
-// @ts-nocheck
+//---------------------DOCS------------------------------------------------------//
+// This component creates new subtrees. First the leaf nodes as components are defined. 
+// Next the decision nodes are created. 
+// Afterwards for every leaf nodes each decision node has to be labelled with edges. 
+// If all decision nodes for each leaf nodes are labeled, the tree can be submitted. 
+// With the submit, the subtree object is created in the complete and optimized mode.
+// The optimized object is build with the function optimize and helper functions of finalizetree, getuniqueLabels, buildLevels and getOccurrences
+// The optimized function selects the tree level which has the best splitting capability of the given dataset. Therefore the highest number of distinct labels is selected.
+// The highest number of distinct labels is selected as next tree level and creates splitted subgroups. 
+// For those subgroups the process starts again and the remaining levels are checked whether they split each of the subgroups best. For the best splitting criterium the level 
+// is removed for the respective subgroup. This implies that for the subtrees different decision nodes are relevant for splitting. 
+// The whole process is repeated until each leaf node can be clearly identified with the shortest tree path.
 
 export let name;
+
+//---------------------Test Trees-------------------------------//
 
 const tree = {Processing: {name: "Processing", type: "default", complete: [{Eschersheim: [{Crowded : "Yes"}, {Distance: "<10min"},{FreeParking : "Yes"}, {Price : "3,30€"} ]},
                   {Brentanobad: [{Crowded : "Yes"}, {Distance : "<10min"},{FreeParking : "No"}, {Price : "3,30€"}]},
@@ -22,20 +35,23 @@ const tree = {Processing: {name: "Processing", type: "default", complete: [{Esch
                    {Seedammbad: [{Crowded : "1"},{Distance : "4"}, {FreeParking : "6"}, {Price : "8"}, {1: "10"}]},
                    {test1: [{Crowded : "2"},{Distance : "4"}, {FreeParking : "6"}, {Price : "8"}, {1: "10"}]}
           ]
+//------------------------------------------------------------------//
 
 
 	let i = 0;
     let selected = "";
-    //let leaves = ["Samza", "Solr", "Flink", "Storm", "Kafka"];
+    // leaves can be configured with default values
+    // let leaves = ["Samza", "Solr", "Flink", "Storm", "Kafka"];
     let leaves = [];
     let newleaf = "";
+    // nodes can be configured with default values
     // let nodes = [
     //     { name: "Stream/Batch" , description: "How fast should the data be updated"},
     //     { name: "Max data volumes" , description: "What amount of data should the component handle"},
     //     { name: "APIs" , description: "What APIs are available"},
     // ];
     let nodes = [{name: 'decision', description: 'description'}];
-    // @ts-ignore
+    
     let labelsequence = [];
     let labels = [];
 
@@ -43,6 +59,8 @@ const tree = {Processing: {name: "Processing", type: "default", complete: [{Esch
     let newdescription = "";
     let key = "";
     const subtree = {};
+
+    // leaf manipulation
 
     function addleaf() {
         leaves.push(newleaf);
@@ -59,6 +77,8 @@ const tree = {Processing: {name: "Processing", type: "default", complete: [{Esch
         leaves = leaves;
 		i = Math.min(i, leaves.length);
 	}
+
+    // decision nodes manipulation
 
     function addNode() {
         nodes.push({name: newname, description: newdescription});
@@ -79,6 +99,8 @@ const tree = {Processing: {name: "Processing", type: "default", complete: [{Esch
         i=0;
         console.log(nodes);
     }
+
+    // Label creation
             
     function createLabels() {
             labelsequence.push(leaves[key]);
@@ -110,13 +132,13 @@ const tree = {Processing: {name: "Processing", type: "default", complete: [{Esch
                 //name: "Processing", type: "default", complete:
             });console.log(subtree)
             let complete = subtree.complete
-            subtree.optimized = optimize(complete)
-            alert(JSON.stringify(subtree));
+            subtree.optimized = optimize(complete) // create optimized tree with submit
+            alert(JSON.stringify(subtree)); // result
             
     };
 
     function optimize(complete) {
-        //initializes optimized tree and calculate decision nodes. Afterwards start recursive process
+        //initializes optimized tree and calculate decision nodes. Afterwards start optimizing process for each level. 
         let optimized = [];
         for (let leaf of complete){
             let key = Object.keys(leaf)[0]
@@ -143,8 +165,7 @@ const tree = {Processing: {name: "Processing", type: "default", complete: [{Esch
         console.log('result before next run', finalresL1)
         //console.log(Object.values(finalresL1[0])[0], L0, optimized)
         //console.log(optimized == L0)
-        //if (Object.values(finalresL1[0])[0] == L0){
-        //return Object.values(finalresL1[0])[0]}
+        
         let treelevels = [];
         let treesets = [];
         for (let subset of finalresL1[1]){
@@ -152,8 +173,7 @@ const tree = {Processing: {name: "Processing", type: "default", complete: [{Esch
             treesets.push(subset[1])
         }
         // third run
-        //let checksets = [...treesets]
-        //let checklevels = [...treelevels]
+       
         let end = treelevels.length 
         let counter = 0;
         for (let subset of treelevels){
@@ -212,6 +232,7 @@ const tree = {Processing: {name: "Processing", type: "default", complete: [{Esch
     }
 
     function finalizetree(optimized, newlevels, complete, result) {
+        // define subtrees of  the current level that have the same label. Those subtrees are handed over to buildlevel function
         let level1 = [];
         let notifier = 0;
         
@@ -275,6 +296,7 @@ const tree = {Processing: {name: "Processing", type: "default", complete: [{Esch
         return occurrences}
 
     function buildLevels(levels, optimized, complete){
+        // defines next level which is added to the optimized tree thats splits the remaining nodes best. It returns the remaining levels and optimized tree
         console.log("build levels")
         if (levels.length === 0) {return optimized}
         let uniqueLabels = [];
@@ -452,30 +474,7 @@ const tree = {Processing: {name: "Processing", type: "default", complete: [{Esch
     }
 
 
-    /* h1 {
-    text-align: center;
-    letter-spacing: 5px;
-    padding: 2rem;
-    }
-
-    .btn-primary {
-        background-color: rgb(62, 19, 102);
-        border: rgb(62, 19, 102);
-    }
-
-    .btn-primary:hover {
-        background-color: blueviolet;
-    }
-
-    .btn-primary:active {
-        background-color: blueviolet;
-    } */
-
-   /*
-	.done {
-		opacity: 0.4;
-	}
-    */
+    
 
     
 </style>

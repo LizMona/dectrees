@@ -1,6 +1,7 @@
 <!-- Author Lisa Bucher -->
 <script>
-	
+	// renders the different components with a menu navigation and navigation bar
+
 	//import Ff from './ff.svelte';
 	import Home from './Home.svelte';
 	//import Semantic from './Semantic.svelte';
@@ -84,8 +85,8 @@
 	<Home />
 	
 	{:else if menu === 5 && displaymode}
-	<div class="d-flex justify-content-center p-3">
-		<div class="d-flex justify-content-center p-3">
+	<div class="d-flex justify-content-center p-1">
+		<div class="d-flex justify-content-center p-2">
 				<div class="form-check form-switch">
 					<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" on:click={() => (optimized = !optimized)}>
 					<label class="form-check-label" for="flexSwitchCheckDefault">{displaymode} tree display mode</label>

@@ -1,5 +1,5 @@
 <script>
-    
+    // shows the home page and sematic pipeline description
     export let nav = 1;
     const vs = ['Velocity', 'Variety', 'Veracity', 'Variability'];
     
