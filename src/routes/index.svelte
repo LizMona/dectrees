@@ -43,10 +43,10 @@
 		usecase = 'create'
 	}
 	else if (menu === 5) {
-		topic = 'Final big data'
+		topic = 'Final Big Data'
 	}
 	$: if (menu === 1) {
-		topic = 'Big data'}
+		topic = 'Big Data'}
 
 </script>
 
@@ -77,7 +77,7 @@
 		</div>
 		</div>
 	</nav>
-	<h1 class="display-3">{topic} decision trees</h1>
+	<h1 class="display-3">Benchtree {topic} Decision Trees</h1>
 	<p class="lead">Generate your big data benchmark or verify your results!</p>
 	<!-- <p>{optimized}, {mode}, {name}</p> -->
 
@@ -142,7 +142,7 @@
 </body>
 <footer class="footer mt-auto py-5"> 
 	<div class="container">
-		<span class="text-muted"> Copyright by Lisa Bucher | LinkedIn | 12.07.2022 </span>
+		<span class="text-muted"> Copyright by Lisa Bucher | 06.09.2022 </span>
 	</div>
 </footer>
 
