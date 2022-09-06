@@ -141,7 +141,7 @@ context of comparison with other SUTs. The big data ecosystem aims to be vendor-
     </div>
     <div class="row g-0">
     <div class="col-md-6">
-        <img id="pic1" src="src/pocblast.png" class="img-fluid rounded-start" alt="blast" width="600" height="600">
+        <img id="pic1" src="src/blast.png" class="img-fluid rounded-start" alt="blast" width="600" height="600">
     </div>
     <div class="col-md-6">
         <div class="card-body">
