@@ -105,8 +105,10 @@ context of comparison with other SUTs. The big data ecosystem aims to be vendor-
     <div class="col-md-6">
         <div class="card-body">
         <h5 class="card-title">Why decision trees?</h5>
-        <p class="card-text">The semantic model for big data archictures defines the technology agnostic framework for big data architecture setups</p>
-        <p class="card-text"><small class="text-muted">>> Find out more about the NIST big data concept</small></p>
+        <p class="card-text">Decision trees are well used in Machine Learning and appreaciated for their transparency and explainability characteristics. Here decision trees combine best practices from software engineering and machine learning to make decisions based on archietctural design patterns transparent and negotiable.
+            Within the Benchtree Benchmark Suite they are used to represent a benchmark by a specific path of three different technology components. Based on this selection a real-world workload is applied to the benchmark and evaluated as a SUT.
+        </p>
+        <p class="card-text"><small class="text-muted"></small></p>
         </div>
     </div>
     </div>
@@ -123,8 +125,9 @@ context of comparison with other SUTs. The big data ecosystem aims to be vendor-
     <div class="col-md-6">
         <div class="card-body">
         <h5 class="card-title">Semantic description of the big data benchmark</h5>
-        <p class="card-text">The semantic model for big data archictures defines the technology agnostic framework for big data architecture setups</p>
-        <p class="card-text"><small class="text-muted">>> Find out more about the NIST big data concept</small></p>
+        <p class="card-text">The semantic model for big data archictures defines the technology agnostic framework for big data architecture setups. It describes the application provider requirements and represents the connection point for the big data framework providers.</p>
+        <p class="card-text"><small class="text-muted">>> Find out more about the arc42 documentation templates</small> <a href='https://arc42.org/download'>Arc42 Downloads</a></p>
+       
         <button type="button" class="btn btn-secondary" on:click|preventDefault={() => (nav = 2)}>Create semantic model</button>
         <!-- <a class="nav-link" href="/Processing" on:click|preventDefault={() => (menu = 2)}>Processing Frameworks</a> -->
         </div>
@@ -145,7 +148,29 @@ context of comparison with other SUTs. The big data ecosystem aims to be vendor-
         <h5 class="card-title">Watch the benchmark for the BLAST example!</h5>
         <a href='https://bmcbioinformatics.biomedcentral.com/track/pdf/10.1186/s12859-017-1902-7.pdf'>Proof of Concept | Real world application</a>
         <p></p>
-        <button type="button" class="btn btn-secondary" on:click|preventDefault={() => (nav = 2)}>Architecture Decisions for BLAST</button>
+        <p class="card-text NIST">
+            <p class='NIST'> The first decision for BLAST goes to Apache Spark. The BLAST algorithm requires two batches of sequences with a bounded start and end that are compared for matches. 
+                The required result is also a list of matched sequences, that are delivered to the data consumer as a batch. Velocity requirements are addressed for batch processing and no individual stream processing.
+                Therefore the first decision is selected for a batch processing engine. Consequently, batch processing comes with a whishes exactly-once-processing guarantee, to guarantee reliable processing.
+                Next the velocity requirements lead to desired in-memory capabilities that speed up processing times. 
+                Thus the decision goes to Apache Spark.
+            </p>
+            <p class="card-text NIST">
+                <p class='NIST'> The second decision for BLAST end-to-end-benchmark goes to Apache Cassandra. Based on the BLAST requirements, Availability as Reliability is stated as more important than consistency.
+                    Especially with a dedicated BLAST data model in Cassandra, it is possible to split the BLAST algorithm in seperated write and read queries. 
+                    The calculation of high scoring sequence sections can be done as write requests and a single read request can determine if a match of sequences occurred.
+                    In consequence, no strong consistency is needed as write operations are finished before the read request is performed. In terms of query requirements, read and write requests are supported by read by key and atomic operations.
+                    High speed delivery to Spark processing engine is facilitated by Cassandra's in-memory capabilities.
+                    To speed up the read requests, BLAST velocity requirements are facilitated by fast index structures of primary and secondary indexes.
+                </p>
+            <p class="card-text NIST">
+                    <p class='NIST'> Finally the last decision for infrastructure providers falls to Google Cloud as a provider for customized IaaS setup. 
+                        The decisive parameter of networking capabilities requires a less networking sensitive workload. 
+                        Data sets are distributed in groups of virtual machines and throughput is managed by horizontal scalability. Furthermore the workload doesn't require interactive communication.
+                        This leads to a low networking sensitivity. Thus the standard IaaS customized setup can be chosen with individual configuration of memory capabilities and number of machines.
+                        This cloud service can also be provided by other companies, and Google Cloud is selected here as an example.
+                    </p>
+        <!-- <button type="button" class="btn btn-secondary" on:click|preventDefault={() => (nav = 2)}>Architecture Decisions for BLAST</button> -->
         </div>
     </div>
     </div>
